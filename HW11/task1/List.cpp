@@ -12,6 +12,7 @@ struct List
 	ListElement* head = nullptr;
 };
 
+
 List* createList()
 {
 	return new List;
@@ -29,17 +30,11 @@ void addValue(List* list, int value)
 		list->head = new ListElement{ value, nullptr };
 		return;
 	}
-	ListElement* tmp1 = nullptr;
-	ListElement* tmp2 = list->head;
-	while (tmp2 != nullptr)
-	{
-		tmp1 = tmp2;
-		tmp2 = tmp2->next;
-	}
-	tmp1->next = new ListElement{ value, tmp2 };
+	ListElement* tmp = list->head;
+	list->head = new ListElement{ value, tmp };
 }
 
-bool checkHead(List* list, int number)
+bool isValueInHeadEqualsTo(List* list, int number)
 {
 	return list->head->value == number;
 }
@@ -51,12 +46,12 @@ bool deleteValue(List* list, int value)
 		return true;
 	}
 
-	if (checkHead(list, value))
+	if (isValueInHeadEqualsTo(list, value))
 	{
 		ListElement* help = list->head->next;
 		delete list->head;
 		list->head = help;
-		return false;
+		return true;
 	}
 	ListElement* nxt = list->head;
 	ListElement* tmp = list->head;
@@ -72,6 +67,7 @@ bool deleteValue(List* list, int value)
 		nxt = tmp;
 		tmp = tmp->next;
 	}
+	return true;
 }
 		
 void printList(List* list)
@@ -83,7 +79,7 @@ void printList(List* list)
 	}
 	while (current != nullptr)
 	{
-		printf("%d ", current->value );
+		printf("%d ", current->value);
 		current = current->next;
 	}
 }

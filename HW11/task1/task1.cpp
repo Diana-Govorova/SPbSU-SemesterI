@@ -11,13 +11,13 @@ void addValue(int graph[size][size], int firstVertex, int secondVertex, int leng
 void readFromFile(FILE* file, int testGraph[size][size], int arrayOfCapitalsTest[], int& n, int& k)
 {
 	int m = 0;
-	int i = 0;
-	int j = 0;
-	int len = 0;
 	fscanf(file, "%d", &n);
 	fscanf(file, "%d", &m);
 	for (int l = 0; l < m; l++)
 	{
+		int i = 0;
+		int j = 0;
+		int len = 0;
 		fscanf(file, "%d", &i);
 		fscanf(file, "%d", &j);
 		fscanf(file, "%d", &len);
@@ -30,7 +30,6 @@ void readFromFile(FILE* file, int testGraph[size][size], int arrayOfCapitalsTest
 		fscanf(file, "%d", &arrayOfCapitalsTest[i]);
 	}
 }
-
 
 const bool test()
 {
