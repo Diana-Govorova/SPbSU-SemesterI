@@ -57,6 +57,7 @@ const bool test()
 	}
 	delete[] arrayOfCapitalsTest;
 	deleteList(countriesTest[0]);
+	deleteList(countriesTest[1]);
 	deleteList(countriesTest[2]);
 
 	return test1 && test2;
