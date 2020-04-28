@@ -1,4 +1,5 @@
 ﻿#include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include "linkedList.h"
 
@@ -16,9 +17,7 @@ bool compareHeads(List* list1, List* list2, SortOrder sortOrder)
 	}
 	else
 	{
-		int tmp1 = (int)(returnHeadElementNumber(list1) - '0');
-		int tmp2 = (int)(returnHeadElementNumber(list2) - '0');
-		return tmp1 <= tmp2;
+		return atoi(returnHeadElementNumber(list1)) <= atoi(returnHeadElementNumber(list2));
 	}
 }
 
