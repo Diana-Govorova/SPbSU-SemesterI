@@ -80,7 +80,7 @@ int main()
 	FILE* file = fopen("InputFile.txt", "r");
 	char* commentString = getComments(file, tableOfState, header, sizeOfColumns);
 	fclose(file);
-	deleteMatrix(tableOfState, sizeOfColumns, header);
+	deleteMatrix(tableOfState, sizeOfStrings, header);
 	printf("%s", commentString);
 	delete[] commentString;
 	return 0;
