@@ -118,7 +118,6 @@ bool isSorted(List* list, SortOrder sortOrder)
 
 int main()
 {
-	
 	List* list = createList();
 	FILE* in = fopen("ListOfMembers.txt", "r");
 	while (!feof(in))
