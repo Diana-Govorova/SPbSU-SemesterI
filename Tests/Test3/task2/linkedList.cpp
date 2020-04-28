@@ -107,8 +107,8 @@ bool deleteValue(List* list, ListElement* current)
 		list->head = list->head->next;
 	}
 	ListElement* help = current->next->next;
-	delete current->next->name;
-	delete current->next->number;
+	delete[] current->next->name;
+	delete[] current->next->number;
 	delete current->next;
 	current->next = help;
 }
@@ -123,7 +123,6 @@ void printList(List* list)
 	for (ListElement* current = list->head; current != nullptr; current = current->next)
 	{
 		printf("%s ", current->name);
-		//printf("%s ", current->number);
 		printf("\n");
 	}
 }
@@ -135,8 +134,8 @@ bool deleteFromHead(List* list)
 		return true;
 	}
 	ListElement* help = list->head->next;
-	delete list->head->name;
-	delete list->head->number;
+	delete[] list->head->name;
+	delete[] list->head->number;
 	delete list->head;
 	list->head = help;
 }
@@ -148,8 +147,8 @@ void deleteList(List* list)
 		while (list->head != nullptr)
 		{
 			ListElement* help = list->head->next;
-			delete list->head->name;
-			delete list->head->number;
+			delete[] list->head->name;
+			delete[] list->head->number;
 			delete list->head;
 			list->head = help;
 		}

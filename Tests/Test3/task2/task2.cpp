@@ -10,9 +10,16 @@ enum class SortOrder
 
 bool compareHeads(List* list1, List* list2, SortOrder sortOrder)
 {
-	return sortOrder == SortOrder::byName
-		? strcmp(returnHeadElementName(list1), returnHeadElementName(list2)) <= 0
-		: strcmp(returnHeadElementNumber(list1), returnHeadElementNumber(list2)) <= 0;
+	if (sortOrder == SortOrder::byName)
+	{
+		return strcmp(returnHeadElementName(list1), returnHeadElementName(list2)) <= 0;
+	}
+	else
+	{
+		int tmp1 = (int)(returnHeadElementNumber(list1) - '0');
+		int tmp2 = (int)(returnHeadElementNumber(list2) - '0');
+		return tmp1 <= tmp2;
+	}
 }
 
 List* merge(List* sortedListLeft, List* sortedListRight, SortOrder sortOrder)
@@ -46,7 +53,6 @@ List* merge(List* sortedListLeft, List* sortedListRight, SortOrder sortOrder)
 	deleteList(sortedListRight);
 	return listFinally;
 }
-
 
 List* mergeSort(List* list, SortOrder sortOrder)
 {
@@ -113,6 +119,7 @@ bool isSorted(List* list, SortOrder sortOrder)
 
 int main()
 {
+	
 	List* list = createList();
 	FILE* in = fopen("ListOfMembers.txt", "r");
 	while (!feof(in))
