@@ -2,28 +2,34 @@
 #include <stdbool.h>
 #include <stdlib.h>
 
+enum class State
+{
+	WaitLetter,
+	WaitLetterOfNumberOrTrait
+};
+
 bool isLetter(char* set)
 {
+	State state = State::WaitLetter;
 	int index = 0;
-	int state = 0;
 	while (true)
 	{
 		switch (state)
 		{
-		case 0:
+		case State::WaitLetter:
 		{
-			if (set[index] >= 'A' && set[index] <= 'Z')
+			if ((set[index] >= 'A' && set[index] <= 'Z') || (set[index] >= 'a' && set[index] <= 'z'))
 			{
-				state = 1;
+				state = State::WaitLetterOfNumberOrTrait;
 				break;
 			}
 			return false;
 		}
-		case 1:
+		case State::WaitLetterOfNumberOrTrait:
 		{
-			if ((set[index] >= 'A' && set[index] <= 'Z') || (set[index] >= 'a' && set[index] <= 'z') || (set[index] >= '0' && set[index] <= '9') || (set[index] >= '_'))
+			if ((set[index] >= 'A' && set[index] <= 'Z') || (set[index] >= 'a' && set[index] <= 'z') || (set[index] >= '0' && set[index] <= '9') || (set[index] == '_'))
 			{
-				state = 1;
+				state = State::WaitLetterOfNumberOrTrait;
 				break;
 			}
 			if (set[index] == '\0')
